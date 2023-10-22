@@ -117,16 +117,16 @@ namespace ISM6225_Fall_2023_Assignment_2
             {
                 if (nums[i] == start)
                 {
-                    start++;
+                    start++; // the current number is not missing
                 }
-                else if (nums[i] > start)
+                else if (nums[i] > start)// Add a missing range if there's a gap between start and the current number
                 {
                     result.Add(nums[i] - start == 1 ? start.ToString() : start + "->" + (nums[i] - 1));
                     start = (long)nums[i] + 1;
                 }
             }
 
-            if (start <= upper)
+            if (start <= upper)// Add the remaining range if there are any missing numbers
             {
                 result.Add(start == upper ? start.ToString() : start + "->" + upper);
             }
@@ -188,7 +188,7 @@ namespace ISM6225_Fall_2023_Assignment_2
                     return false;
                 }
             }
-            return stack.Count == 0;
+            return stack.Count == 0;  // Stack should be empty if all brackets are matched
         }
 
 
@@ -222,11 +222,11 @@ namespace ISM6225_Fall_2023_Assignment_2
             {
                 if (prices[i] < minPrice)
                 {
-                    minPrice = prices[i];
+                    minPrice = prices[i];// Update the minimum price seen so far
                 }
                 else if (prices[i] - minPrice > maxProfit)
                 {
-                    maxProfit = prices[i] - minPrice;
+                    maxProfit = prices[i] - minPrice; // Update the maximum profit
                 }
             }
             return maxProfit;
@@ -267,7 +267,7 @@ namespace ISM6225_Fall_2023_Assignment_2
             int left = 0;
             int right = num.Length - 1;
 
-            while (left <= right)
+            while (left <= right)// check if the number is strobogrammaticmap
             {
                 if (!strobogrammaticMap.ContainsKey(num[left]) || strobogrammaticMap[num[left]] != num[right])
                 {
@@ -319,12 +319,12 @@ namespace ISM6225_Fall_2023_Assignment_2
             {
                 if (count.ContainsKey(num))
                 {
-                    result += count[num];
+                    result += count[num]; // Count the number of good pairs
                     count[num]++;
                 }
                 else
                 {
-                    count[num] = 1;
+                    count[num] = 1; // Initialize the count for the number
                 }
             }
 
@@ -385,16 +385,16 @@ namespace ISM6225_Fall_2023_Assignment_2
                 {
                     third = second;
                     second = first;
-                    first = num;
+                    first = num; // Update the top three maximums
                 }
                 else if (num > second)
                 {
                     third = second;
-                    second = num;
+                    second = num;// update 2 maximums
                 }
                 else if (num > third)
                 {
-                    third = num;
+                    third = num; // update top maximum
                 }
             }
 
@@ -425,14 +425,14 @@ namespace ISM6225_Fall_2023_Assignment_2
         public static IList<string> GeneratePossibleNextMoves(string currentState)
         {
             List<string> result = new List<string>();
-            for (int i = 1; i < currentState.Length; i++)
+            for (int i = 1; i < currentState.Length; i++)// make a single move 
             {
                 if (currentState[i - 1] == '+' && currentState[i] == '+')
                 {
                     result.Add(currentState.Substring(0, i - 1) + "--" + currentState.Substring(i + 1));
                 }
             }
-            return result;
+            return result;// return all the values after one move
         }
 
 
@@ -457,14 +457,14 @@ namespace ISM6225_Fall_2023_Assignment_2
         public static string RemoveVowels(string s)
         {
             StringBuilder result = new StringBuilder();
-            foreach (char c in s)
+            foreach (char c in s)// check for the each character in the string
             {
-                if (c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u')
+                if (c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u')// eliminate all the vowels 
                 {
-                    result.Append(c);
+                    result.Append(c);// remove the vowels
                 }
             }
-            return result.ToString();
+            return result.ToString(); //return the string.
         }
 
 
